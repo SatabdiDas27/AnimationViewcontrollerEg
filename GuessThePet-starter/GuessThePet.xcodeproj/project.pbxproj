@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		103136DD20A4B41600E797FA /* SwipeInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103136DC20A4B41600E797FA /* SwipeInteractionController.swift */; };
 		10766E9F20A245B4008870FF /* FlipPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10766E9E20A245B4008870FF /* FlipPresentAnimationController.swift */; };
 		10766EA120A25916008870FF /* FlipDismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10766EA020A25916008870FF /* FlipDismissAnimationController.swift */; };
 		18F4A6551F6355560076435C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F4A6541F6355560076435C /* Launch Screen.storyboard */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		103136DC20A4B41600E797FA /* SwipeInteractionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeInteractionController.swift; sourceTree = "<group>"; };
 		10766E9E20A245B4008870FF /* FlipPresentAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipPresentAnimationController.swift; sourceTree = "<group>"; };
 		10766EA020A25916008870FF /* FlipDismissAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipDismissAnimationController.swift; sourceTree = "<group>"; };
 		18F4A6541F6355560076435C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 		BB3B33DF1B40654F00B5C810 /* Interaction controllers */ = {
 			isa = PBXGroup;
 			children = (
+				103136DC20A4B41600E797FA /* SwipeInteractionController.swift */,
 			);
 			path = "Interaction controllers";
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				BB3B33A81B40386700B5C810 /* AppDelegate.swift in Sources */,
 				18F4A6591F635A6D0076435C /* StoryboardSupport.swift in Sources */,
 				BB3B33D11B4039FB00B5C810 /* CardViewController.swift in Sources */,
+				103136DD20A4B41600E797FA /* SwipeInteractionController.swift in Sources */,
 				BB3B33CF1B4039A600B5C810 /* PageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
