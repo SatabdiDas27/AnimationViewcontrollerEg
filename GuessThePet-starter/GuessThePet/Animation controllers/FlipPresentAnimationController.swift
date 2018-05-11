@@ -91,6 +91,9 @@ class FlipPresentAnimationController: NSObject,UIViewControllerAnimatedTransitio
       animations: {
         // 2
         UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1/3) {
+
+          print("fromVC class \(fromVC)")
+          
           fromVC.view.layer.transform = AnimationHelper.yRotation(-.pi / 2)
         }
         

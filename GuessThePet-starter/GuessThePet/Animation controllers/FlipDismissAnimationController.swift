@@ -51,7 +51,8 @@ class FlipDismissAnimationController: NSObject,UIViewControllerAnimatedTransitio
       else {
         return
     }
-    
+    print("\(fromVC)")
+    print("\(toVC)")
     snapshot.layer.cornerRadius = CardViewController.cardCornerRadius
     snapshot.layer.masksToBounds = true
     

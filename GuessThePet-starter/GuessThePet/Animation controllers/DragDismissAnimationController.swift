@@ -28,59 +28,46 @@
 
 import UIKit
 
-class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
-
-  var interactionInProgress = false
+class DragDismissAnimationController: NSObject,UIViewControllerAnimatedTransitioning {
   
-  private var shouldCompleteTransition = false
-  private weak var viewController:UIViewController!
- 
-  init(viewController: UIViewController) {
-    super.init()
-    self.viewController = viewController
-    prepareGestureRecognizer(in: viewController.view)
+  private let destinationFrame: CGRect
+  let dragInteractionController: DragInteractionController?
+  
+  init(destinationFrame: CGRect,interactionController: DragInteractionController?) {
+    self.destinationFrame = destinationFrame
+    self.dragInteractionController = interactionController
   }
   
-  private func prepareGestureRecognizer(in view:UIView) {
-    
-    let gesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleGesture(_:)))
-    
-    gesture.edges = .left
-    view.addGestureRecognizer(gesture)
+  func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    return 0.6
   }
   
-  @objc func handleGesture(_ gestureRecognizer:UIScreenEdgePanGestureRecognizer) {
+  func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
     
-    let translation = gestureRecognizer.translation(in: gestureRecognizer.view!.superview)
-    var progress = (translation.x / 200)
-    progress = CGFloat(fminf(fmaxf(Float(progress), 0.0), 1.0))
-    
-    
-    switch gestureRecognizer.state {
-      
-    case .began:
-      interactionInProgress = true
-      viewController.dismiss(animated: true, completion: nil)
-    
-    case .changed:
-       shouldCompleteTransition = progress > 0.5
-       update(progress)
-      
-    case .cancelled:
-      interactionInProgress = false
-      cancel()
-      
-    case .ended:
-      interactionInProgress = false
-      if shouldCompleteTransition {
-        finish()
-      } else {
-        cancel()
-      }
-    default:
-      break
-      
+    guard let fromVC = transitionContext.viewController(forKey: .from),
+      let toVC = transitionContext.viewController(forKey: .to)
+     //let snapshot = fromVC.view.snapshotView(afterScreenUpdates: false)
+      else {
+        return
     }
     
+    transitionContext.containerView.insertSubview(toVC.view, belowSubview: fromVC.view)
+    
+    let screenBounds = UIScreen.main.bounds
+    let bottomLeftCorner = CGPoint(x: 0, y: screenBounds.height)
+    let finalFrame = CGRect(origin: bottomLeftCorner, size: screenBounds.size)
+    
+    UIView.animate(
+      withDuration: transitionDuration(using: transitionContext),
+      animations: {
+        fromVC.view.frame = finalFrame
+    },
+      completion: { _ in
+        transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+    }
+    )
+
   }
+  
+
 }

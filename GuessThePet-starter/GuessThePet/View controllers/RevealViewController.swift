@@ -42,7 +42,44 @@ class RevealViewController: UIViewController {
     swipeInteractionController = SwipeInteractionController(viewController:self)
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segueIdentifier(for: segue) == .revealToModal,
+      let destinationViewController = segue.destination as? RevealtoModalViewController {
+      destinationViewController.transitioningDelegate = self
+    }
+  }
+  
   @IBAction func dismissPressed(_ sender: UIButton) {
     dismiss(animated: true, completion: nil)
   }
+  
+ 
+}
+
+extension RevealViewController: SegueHandlerType {
+  enum SegueIdentifier: String {
+    case revealToModal
+  }
+}
+
+extension RevealViewController: UIViewControllerTransitioningDelegate {
+
+  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    guard let revealtoModalVC = dismissed as? RevealtoModalViewController else {
+      return nil
+    }
+    return DragDismissAnimationController(destinationFrame: self.view.frame, interactionController: revealtoModalVC.dragInteractionController)
+  }
+  
+  func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning)
+    -> UIViewControllerInteractiveTransitioning? {
+      guard let animator = animator as? DragDismissAnimationController,
+        let interactionController = animator.dragInteractionController,
+        interactionController.interactionInProgress
+        else {
+          return nil
+      }
+      return interactionController
+  }
+  
 }

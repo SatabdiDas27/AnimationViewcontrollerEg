@@ -28,59 +28,53 @@
 
 import UIKit
 
-class SwipeInteractionController: UIPercentDrivenInteractiveTransition {
+class RevealtoModalViewController: UIViewController {
 
-  var interactionInProgress = false
-  
-  private var shouldCompleteTransition = false
-  private weak var viewController:UIViewController!
- 
-  init(viewController: UIViewController) {
-    super.init()
-    self.viewController = viewController
-    prepareGestureRecognizer(in: viewController.view)
-  }
-  
-  private func prepareGestureRecognizer(in view:UIView) {
-    
-    let gesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleGesture(_:)))
-    
-    gesture.edges = .left
-    view.addGestureRecognizer(gesture)
-  }
-  
-  @objc func handleGesture(_ gestureRecognizer:UIScreenEdgePanGestureRecognizer) {
-    
-    let translation = gestureRecognizer.translation(in: gestureRecognizer.view!.superview)
-    var progress = (translation.x / 200)
-    progress = CGFloat(fminf(fmaxf(Float(progress), 0.0), 1.0))
-    
-    
-    switch gestureRecognizer.state {
-      
-    case .began:
-      interactionInProgress = true
-      viewController.dismiss(animated: true, completion: nil)
-    
-    case .changed:
-       shouldCompleteTransition = progress > 0.5
-       update(progress)
-      
-    case .cancelled:
-      interactionInProgress = false
-      cancel()
-      
-    case .ended:
-      interactionInProgress = false
-      if shouldCompleteTransition {
-        finish()
-      } else {
-        cancel()
-      }
-    default:
-      break
+  var dragInteractionController:DragInteractionController?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        dragInteractionController = DragInteractionController(viewController:self)
       
     }
-    
+  
+  override func viewDidAppear(_ animated: Bool) {
+    //showHelperCircle()
   }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+      
+    }
+  
+  func showHelperCircle(){
+    let center = CGPoint(x: view.bounds.width * 0.5, y: 100)
+    let small = CGSize(width: 30, height: 30)
+    let circle = UIView(frame: CGRect(origin: center, size: small))
+    circle.layer.cornerRadius = circle.frame.width/2
+    circle.backgroundColor = UIColor.green
+    circle.layer.shadowOpacity = 0.8
+    circle.layer.shadowOffset = CGSize()
+    view.addSubview(circle)
+    UIView.animate(
+      withDuration: 0.5,
+      delay: 0.25,
+      options: [],
+      animations: {
+        circle.frame.origin.y += 200
+        circle.layer.opacity = 0
+    },
+      completion: { _ in
+        circle.removeFromSuperview()
+    }
+    )
+  }
+    
+    
+    @IBAction func reveal(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+ 
+
 }

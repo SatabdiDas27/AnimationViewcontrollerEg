@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10272FF220A4D5B600F33D2D /* RevealtoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10272FF120A4D5B600F33D2D /* RevealtoModalViewController.swift */; };
+		10272FF420A6039F00F33D2D /* DragDismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10272FF320A6039F00F33D2D /* DragDismissAnimationController.swift */; };
+		10272FF620A60C6000F33D2D /* DragInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10272FF520A60C6000F33D2D /* DragInteractionController.swift */; };
 		103136DD20A4B41600E797FA /* SwipeInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103136DC20A4B41600E797FA /* SwipeInteractionController.swift */; };
 		10766E9F20A245B4008870FF /* FlipPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10766E9E20A245B4008870FF /* FlipPresentAnimationController.swift */; };
 		10766EA120A25916008870FF /* FlipDismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10766EA020A25916008870FF /* FlipDismissAnimationController.swift */; };
@@ -25,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10272FF120A4D5B600F33D2D /* RevealtoModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealtoModalViewController.swift; sourceTree = "<group>"; };
+		10272FF320A6039F00F33D2D /* DragDismissAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragDismissAnimationController.swift; sourceTree = "<group>"; };
+		10272FF520A60C6000F33D2D /* DragInteractionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragInteractionController.swift; sourceTree = "<group>"; };
 		103136DC20A4B41600E797FA /* SwipeInteractionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeInteractionController.swift; sourceTree = "<group>"; };
 		10766E9E20A245B4008870FF /* FlipPresentAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipPresentAnimationController.swift; sourceTree = "<group>"; };
 		10766EA020A25916008870FF /* FlipDismissAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipDismissAnimationController.swift; sourceTree = "<group>"; };
@@ -113,6 +119,7 @@
 				BB3B33D01B4039FB00B5C810 /* CardViewController.swift */,
 				BB3B33CC1B4038ED00B5C810 /* RevealViewController.swift */,
 				BB3B33CE1B4039A600B5C810 /* PageViewController.swift */,
+				10272FF120A4D5B600F33D2D /* RevealtoModalViewController.swift */,
 			);
 			path = "View controllers";
 			sourceTree = "<group>";
@@ -148,6 +155,7 @@
 			children = (
 				10766E9E20A245B4008870FF /* FlipPresentAnimationController.swift */,
 				10766EA020A25916008870FF /* FlipDismissAnimationController.swift */,
+				10272FF320A6039F00F33D2D /* DragDismissAnimationController.swift */,
 			);
 			path = "Animation controllers";
 			sourceTree = "<group>";
@@ -156,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				103136DC20A4B41600E797FA /* SwipeInteractionController.swift */,
+				10272FF520A60C6000F33D2D /* DragInteractionController.swift */,
 			);
 			path = "Interaction controllers";
 			sourceTree = "<group>";
@@ -236,10 +245,13 @@
 			files = (
 				10766EA120A25916008870FF /* FlipDismissAnimationController.swift in Sources */,
 				BB3B33DD1B4064E600B5C810 /* PetCardStore.swift in Sources */,
+				10272FF620A60C6000F33D2D /* DragInteractionController.swift in Sources */,
 				BB3B33CD1B4038ED00B5C810 /* RevealViewController.swift in Sources */,
 				BB3B33D41B403BAF00B5C810 /* PetCard.swift in Sources */,
 				10766E9F20A245B4008870FF /* FlipPresentAnimationController.swift in Sources */,
 				BBC248791B4D8EFD00F4C642 /* AnimationHelper.swift in Sources */,
+				10272FF420A6039F00F33D2D /* DragDismissAnimationController.swift in Sources */,
+				10272FF220A4D5B600F33D2D /* RevealtoModalViewController.swift in Sources */,
 				BB3B33A81B40386700B5C810 /* AppDelegate.swift in Sources */,
 				18F4A6591F635A6D0076435C /* StoryboardSupport.swift in Sources */,
 				BB3B33D11B4039FB00B5C810 /* CardViewController.swift in Sources */,

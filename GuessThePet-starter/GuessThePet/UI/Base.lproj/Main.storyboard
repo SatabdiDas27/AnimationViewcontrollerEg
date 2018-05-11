@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -69,11 +70,12 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="ZyA-M4-khM" appends="YES" id="RYk-R2-HLz"/>
+                                    <outletCollection property="gestureRecognizers" destination="Sja-cv-BdZ" appends="YES" id="qWZ-dV-zJo"/>
                                 </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="XGI-Xm-4A3" firstAttribute="width" secondItem="s1R-uo-srS" secondAttribute="width" multiplier="1/2" id="V69-TE-ukA"/>
                             <constraint firstItem="XGI-Xm-4A3" firstAttribute="height" secondItem="s1R-uo-srS" secondAttribute="height" multiplier="1/2" id="YZL-xi-LVr"/>
@@ -99,9 +101,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u8e-MV-ec7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="ZyA-M4-khM">
+                <tapGestureRecognizer id="Sja-cv-BdZ">
                     <connections>
-                        <action selector="handleTap" destination="YVg-2m-sqi" id="waW-cY-NK3"/>
+                        <action selector="handleTap" destination="YVg-2m-sqi" id="jEt-K6-387"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -154,9 +156,23 @@
                                 <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2q5-V9-Bnu">
+                                <rect key="frame" x="288" y="626" width="71" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="71" id="08x-Z7-fMH"/>
+                                    <constraint firstAttribute="height" constant="30" id="ZdS-Pf-LMs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
+                                <state key="normal" title="Present !"/>
+                                <connections>
+                                    <segue destination="bd1-6U-0y9" kind="presentation" identifier="revealToModal" id="hSb-X5-EC2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="bZ4-Jc-mLk" firstAttribute="top" secondItem="2q5-V9-Bnu" secondAttribute="bottom" constant="11" id="29V-fe-ydN"/>
+                            <constraint firstItem="2q5-V9-Bnu" firstAttribute="trailing" secondItem="e2C-ax-EbM" secondAttribute="trailingMargin" id="3A7-UQ-KWU"/>
                             <constraint firstItem="Umc-3p-hh4" firstAttribute="height" secondItem="e2C-ax-EbM" secondAttribute="height" multiplier="3/4" id="5NF-tm-juI"/>
                             <constraint firstItem="bZ4-Jc-mLk" firstAttribute="top" secondItem="xsQ-2z-rrg" secondAttribute="bottom" constant="8" symbolic="YES" id="CGK-OF-ack"/>
                             <constraint firstAttribute="centerX" secondItem="ucA-HX-5kc" secondAttribute="centerX" id="Dph-tL-gwR"/>
@@ -185,7 +201,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GIv-r4-zpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2110" y="1271"/>
+            <point key="canvasLocation" x="2109.5999999999999" y="1270.6146926536733"/>
+        </scene>
+        <!--Revealto Modal View Controller-->
+        <scene sceneID="te0-be-pL2">
+            <objects>
+                <viewController id="bd1-6U-0y9" customClass="RevealtoModalViewController" customModule="Guess_the_Pet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pid-kf-C3s"/>
+                        <viewControllerLayoutGuide type="bottom" id="mGs-fC-i0g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ODo-We-mwa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqn-DC-fek">
+                                <rect key="frame" x="131" y="318.5" width="113" height="30"/>
+                                <state key="normal" title="Return to Reveal"/>
+                                <connections>
+                                    <action selector="reveal:" destination="bd1-6U-0y9" eventType="touchUpInside" id="LYw-mg-4NO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sqn-DC-fek" firstAttribute="centerX" secondItem="ODo-We-mwa" secondAttribute="centerX" id="bIm-qH-hHY"/>
+                            <constraint firstItem="sqn-DC-fek" firstAttribute="centerY" secondItem="ODo-We-mwa" secondAttribute="centerY" id="lXV-5n-Rhj"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="czZ-13-lhC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2928.8000000000002" y="1269.7151424287856"/>
         </scene>
     </scenes>
 </document>
